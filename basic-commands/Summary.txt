@@ -1,0 +1,61 @@
+{GENERAL}
+git --version		Check installed Git-version.
+git init		Create empty Git repository.
+git status		Check working directory & staging area status.
+git log			Display all commits of current patch.
+git ls-files		List data in staging area.
+
+
+
+{COMMIT CREATION & ACCESS}
+git add filename (or) git add .			Add single file or all working directory files to staging area.
+git commit -m "message"				Create new commit.
+git checkout commitid				Checkout commit (detached head!).
+
+
+
+{BRANCH CREATION & ACCESS}
+				[Git 2.23+]
+git branch branchname		git switch branchname		Create new branch.
+git checkout branchname						Go to branch.
+git checkout -b branchname	git switch -c branchname	Create and access new branch.
+git merge otherbranch						Bring other branch's changes to current branch.
+
+
+
+{DELETING DATA} 
+[Working Directory file* Already part of previous commit
+git rm filename
+git add filename		Run command after file was deleted from working directory.]
+
+[Unstaged Changes
+git checkout (--) .		
+git restore filename or .			Revert changes in tracked files.
+git clean -df					Delete untracked files.]
+
+[Staged Changes
+git reset filename 
+git checkout -- filename
+git restore --staged filename or .		Remove file(s) from staging area.]
+
+[Latest commit(s)
+git reset HEAD~1
+git reset --soft HEAD~1
+git reset --hard HEAD~1				Undo latest (~1) commit]
+
+[Branches
+git branch -D branchname			Delete branch.]
+
+
+
+{DEEP DIVE SUMMARY}
+git stash		Temporary storage for unstaged and uncommited changes.
+git reflog		A log of all project changes made including deleted commits.
+git merge		Combining commits from different branches by creating a new merge commit (recursive) or by moving the HEAD (fast-forward).
+git rebase		Change the base (i.e. the parent commit) of commits in another branch.
+git cherry-pick		Copy commit including the changes made only in this commit as HEAD to other branch.
+
+
+More on merge conflicts => https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_advanced_merging
+
+Additional merge strategies => https://git-scm.com/docs/merge-strategies
